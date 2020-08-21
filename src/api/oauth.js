@@ -6,7 +6,7 @@ const clientSecret = 'MxMtoL2Q0fU7cx6NxpP6mRiLbssjPRhZ'
 const region = 'eu'
 const API_URL = `https://${region}.battle.net/oauth/token`
 
-function getToken() {
+function getToken () {
   const body = new FormData()
   body.append('grant_type', 'client_credentials')
 
