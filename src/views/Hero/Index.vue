@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import setError from '@/mixins/setError'
+import setError from '@/mixins/setError'
 
 import BaseLoading from '@/components/BaseLoading'
 import HeroDetailHeader from './HeroDetailHeader'
@@ -32,6 +32,8 @@ import { getApiHero, getApiDetailedHeroItems } from '@/api/search'
 
 export default {
   name: 'HeroView',
+
+  mixins: [setError],
 
   components: {
     BaseLoading,
