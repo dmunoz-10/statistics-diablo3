@@ -6,7 +6,11 @@
           <div v-if="item" class="item-image">
             <p class="text-muted">{{ item.name }}</p>
 
-            <img :src="itemUrl" :alt="item.slotName + ' ' + item.name ">
+            <img
+              :src="itemUrl"
+              :alt="slotName + ' ' + item.name "
+              :title="attributes"
+            >
           </div>
         </div>
 
@@ -24,7 +28,7 @@
       </template>
 
       <p v-else>
-        <b-badge class="text-dark"> {{item.slotName}} </b-badge>
+        <b-badge class="text-dark"> {{slotName}} </b-badge>
       </p>
     </div>
   </div>
@@ -65,6 +69,23 @@ export default {
       }
 
       return 'item-none'
+    },
+
+    slotName () {
+      const slotName = this.item.slots.split(/(?=[A-Z])/).join(' ')
+      return slotName[0].toUpperCase() + slotName.slice(1)
+    },
+
+    attributes () {
+      let attributesText = 'Primary Attributes:\n'
+      this.item.attributes.primary.map((attribute) => {
+        attributesText += `${attribute}\n`
+      })
+      attributesText += '\nSecondary Attributes:\n'
+      this.item.attributes.secondary.map((attribute) => {
+        attributesText += `${attribute}\n`
+      })
+      return attributesText
     },
   },
 }
